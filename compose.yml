@@ -1,0 +1,45 @@
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    volumes:
+      - .:/beta-master:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/beta-master/node_modules
+    depends_on:
+      - db
+      - redis
+      - chrome
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      REDIS_URL: redis://redis:6379
+      SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+  chrome:
+    image: selenium/standalone-chrome-debug:latest
+    ports:
+      - 4444:4444
+      - 5901:5900
+
+volumes:
+  bundle:
+  postgres_data:
+  node_modules:
+  redis:
