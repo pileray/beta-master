@@ -23,12 +23,12 @@ jobs:
       RAILS_ENV: test
     steps:
       - uses: actions/checkout@v2
-      - name: Install chrome
+      - name: Install chrome and yarn
         run: |
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
           echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
           apt update -y
-          apt install -y google-chrome-stable
+          apt install -y google-chrome-stable yarn
       - name: bundler config
         run: bundle config set path 'vendor/bundle'
       - name: cache gems
@@ -44,12 +44,11 @@ jobs:
         run: |
           bundle install --jobs 4 --retry 3
       - name: set up node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      - name: install yarn
-        run: npm install -g yarn
+        run: curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+              && apt-get install -y nodejs \
+              && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+              && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+              && apt-get update && apt-get install -y yarn
       - name: install node.js dependencies
         run: yarn install
       - name: Wait for DB
@@ -86,15 +85,6 @@ jobs:
       - name: setup bundle
         if: steps.cache-gems.outputs.cache-hit != 'true'
         run: bundle install --jobs 4 --retry 3
-      - name: set up node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      - name: install yarn
-        run: npm install -g yarn
-      - name: install node.js dependencies
-        run: yarn install
       - name: run rubocop
         run: bundle exec rubocop
   erb-linter:
@@ -116,14 +106,5 @@ jobs:
       - name: setup bundle
         if: steps.cache-gems.outputs.cache-hit != 'true'
         run: bundle install --jobs 4 --retry 3
-      - name: set up node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-          cache: 'yarn'
-      - name: install yarn
-        run: npm install -g yarn
-      - name: install node.js dependencies
-        run: yarn install
       - name: run erblint
         run: bundle exec erblint .
