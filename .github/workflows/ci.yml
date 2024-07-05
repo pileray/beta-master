@@ -48,6 +48,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+      - name: install yarn
+        run: npm install -g yarn
       - name: install node.js dependencies
         run: yarn install
       - name: Wait for DB
@@ -89,6 +91,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+      - name: install yarn
+        run: npm install -g yarn
       - name: install node.js dependencies
         run: yarn install
       - name: run rubocop
@@ -117,6 +121,8 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+      - name: install yarn
+        run: npm install -g yarn
       - name: install node.js dependencies
         run: yarn install
       - name: run erblint
