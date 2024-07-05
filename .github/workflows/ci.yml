@@ -61,6 +61,9 @@ jobs:
       - name: setup db schema
         run: |
           bundle exec rails db:create db:schema:load --trace
+      - name: Precompile assets
+        run: |
+          RAILS_ENV=test bundle exec rails assets:precompile
       - name: run spec
         run: bundle exec rspec
       - name: Archive rspec result screenshots
