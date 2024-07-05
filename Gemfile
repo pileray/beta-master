@@ -60,6 +60,8 @@ group :development do
   # rubocop
   gem 'rubocop'
   gem 'rubocop-rails', require: false
+  # erb-lint
+  gem 'erb_lint', require: false
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
