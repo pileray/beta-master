@@ -58,8 +58,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
 
   # Rspec
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
   # annotate
   gem 'annotate'
 end
