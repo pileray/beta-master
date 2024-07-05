@@ -29,6 +29,15 @@ jobs:
           echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
           apt update -y
           apt install -y google-chrome-stable yarn
+      - name: Install Node.js
+        run: |
+          curl -sL https://deb.nodesource.com/setup_20.x | bash -
+          apt-get install -y nodejs
+      - name: Install Yarn
+        run: |
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          apt-get update && apt-get install -y yarn
       - name: bundler config
         run: bundle config set path 'vendor/bundle'
       - name: cache gems
@@ -43,12 +52,6 @@ jobs:
         if: steps.cache-gems.outputs.cache-hit != 'true'
         run: |
           bundle install --jobs 4 --retry 3
-      - name: set up node.js
-        run: curl -sL https://deb.nodesource.com/setup_20.x | bash - \
-              && apt-get install -y nodejs \
-              && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-              && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-              && apt-get update && apt-get install -y yarn
       - name: install node.js dependencies
         run: yarn install
       - name: Wait for DB
