@@ -1,0 +1,8 @@
+<div class="toast toast-end">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %> flex justify-between items-center">
+      <span><%= message %></span>
+      <button class="ml-4" onclick="this.parentElement.style.display='none';">X</button>
+    </div>
+  <% end %>
+</div>
