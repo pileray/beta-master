@@ -65,7 +65,7 @@ group :development, :test do
   gem 'rspec-rails'
   # annotate
   gem 'annotate'
-  
+
   # Capybaraでのログインテストに利用
   gem 'rack_session_access'
 end
