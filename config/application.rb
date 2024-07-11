@@ -38,5 +38,8 @@ module BetaMaster
         helper_specs: false,
         routing_specs: false
     end
+
+    # Capybaraを利用したログインテスト用にRackSessionAccessを利用
+    config.middleware.use RackSessionAccess::Middleware
   end
 end
