@@ -7,7 +7,7 @@
       <%# ログイン時メニュー %>
       <div class="hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><%= link_to 'クイズ一覧', '#' %></li>
+        <li><%= link_to 'クイズ一覧', quizzes_path %></li>
         <li><%= link_to 'マイページ', '#' %></li>
         <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
       </ul>
@@ -30,7 +30,7 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><%= link_to 'クイズ一覧', '#' %></li>
+          <li><%= link_to 'クイズ一覧', quizzes_path %></li>
           <li><%= link_to 'マイページ', '#' %></li>
           <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %></li>
         </ul>
@@ -39,7 +39,7 @@
       <%# 未ログイン時メニュー %>
       <ul class="menu menu-horizontal px-1 w-lg hidden lg:flex">
         <li>
-          <%= link_to 'クイズ一覧', '#' %>
+          <%= link_to 'クイズ一覧', quizzes_path %>
         </li>
       </ul>
       <%= link_to auth_at_provider_path(provider: :line), class: 'btn btn-sm bg-green-500 text-white' do %>
@@ -67,7 +67,7 @@
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
           <li>
-            <%= link_to 'クイズ一覧', '#' %>
+            <%= link_to 'クイズ一覧', quizzes_path %>
           </li>
         </ul>
       </div>
