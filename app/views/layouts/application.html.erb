@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <title>BetaMaster</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
+    <%= render 'shared/require_login_modal' %>
+    <%= render 'shared/toasts' %>
   </body>
 </html>

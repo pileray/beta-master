@@ -41,3 +41,6 @@ Style/FrozenStringLiteralComment:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false

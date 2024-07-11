@@ -53,6 +53,9 @@ gem 'rails-i18n'
 # 定数管理
 gem 'config'
 
+# ユーザー登録・認証
+gem 'sorcery'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -62,6 +65,9 @@ group :development, :test do
   gem 'rspec-rails'
   # annotate
   gem 'annotate'
+
+  # Capybaraでのログインテストに利用
+  gem 'rack_session_access'
 end
 
 group :development do
@@ -85,4 +91,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  # [WIP]omniauthを利用したテスト作成予定
+  # gem 'omniauth'
+  # gem 'omniauth-test'
+  # gem 'omniauth-line'
+  # gem "omniauth-rails_csrf_protection"
 end

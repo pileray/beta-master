@@ -1,0 +1,4 @@
+default_url_options:
+  host: '9e59-49-98-159-123.ngrok-free.app'
+line_callback_url: 
+  url: 'https://9e59-49-98-159-123.ngrok-free.app/oauth/callback?provider=line'
