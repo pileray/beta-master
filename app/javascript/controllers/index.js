@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import FormController from "./form_controller"
+application.register("form", FormController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import QuizzesListController from "./quizzes_list_controller"
+application.register("quizzes-list", QuizzesListController)
