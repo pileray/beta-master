@@ -71,4 +71,9 @@ RSpec.configure do |config|
   # [WIP]omniauthを利用したテスト作成予定
   # OmniAuth.config.test_mode = true
   # config.include OmniauthMacros
+
+  # test用にcategoryのマスタとクイズを作成
+  config.before :suite do
+    system 'bin/rails db:seed'
+  end
 end
