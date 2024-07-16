@@ -2,9 +2,7 @@
   <td class="max-w-sm "><%= quiz.body %></td>
   <td><%= quiz.answer %></td>
   <td>
-    <div class="<%= quiz.decorate.category_badge_class %> w-20 whitespace-nowrap overflow-hidden text-ellipsis">
-      <%= quiz.category.name %>
-    </div>
+    <%= render 'category', category: quiz.category %>
   </td>
   <td>
     <svg

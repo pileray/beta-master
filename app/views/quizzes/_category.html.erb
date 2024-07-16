@@ -1,0 +1,5 @@
+<%= link_to quizzes_path(q: { category_name_eq: category.name }) do %>
+  <div class="<%= category.decorate.category_badge_class %> w-20 whitespace-nowrap overflow-hidden text-ellipsis mr-1">
+    <%= category.name %>
+  </div>
+<% end %>
