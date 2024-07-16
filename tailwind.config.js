@@ -29,7 +29,13 @@ module.exports = {
       'bg-green-500',
       'text-xs',
       'badge',
-      'badge-outline'
+      'badge-outline',
+      'toast',
+      'toast-end',
+      'alert',
+      'alert-success',
+      'alert-error',
+      'alert-info'
     ],
   },
 }
