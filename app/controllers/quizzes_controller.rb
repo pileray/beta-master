@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   def index
-    # N+1対策を今後実施
-    @quizzes = Quiz.all
+    @q = Quiz.ransack(params[:q])
+    @q.sorts = 'category_name' if @q.sorts.empty?
+    @quizzes = @q.result.includes(:category)
   end
 end

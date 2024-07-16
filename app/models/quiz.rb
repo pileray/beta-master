@@ -15,4 +15,13 @@ class Quiz < ApplicationRecord
   validates :body, presence: true
   validates :answer, presence: true
   validates :offset, presence: true
+
+  # ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["answer", "body", "created_at", "id", "id_value", "offset", "updated_at"]
+  end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "quiz_category"]
+  end
 end
