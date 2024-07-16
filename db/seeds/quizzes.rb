@@ -2,8 +2,7 @@ require 'csv'
 
 puts 'Start inserting seed "Quizzes" ...'
 
-csv_file_name = Rails.env.production? ? 'quizzes_production.csv' : 'quizzes_development.csv'
-csv_file_path = Rails.root.join('db', 'seeds', 'quizzes_csv', csv_file_name)
+csv_file_path = Rails.root.join('db', 'seeds', 'quizzes_csv', "#{Rails.env.downcase}.csv")
 
 CSV.foreach(csv_file_path, headers: true) do |row|
   quiz = Quiz.create!(
