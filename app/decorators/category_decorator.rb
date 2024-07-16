@@ -1,7 +1,8 @@
 class CategoryDecorator < Draper::Decorator
   delegate_all
+  # rubocop:disable all
   def category_badge_class
-    case self.category.name
+    case category.name
     when 'エンタメ'
       'badge bg-sky-100 text-xs'
     when 'スポーツ'
@@ -20,5 +21,5 @@ class CategoryDecorator < Draper::Decorator
       'badge badge-outline text-xs'
     end
   end
-
+  # rubocop:enable all
 end

@@ -1,6 +1,6 @@
-<%= search_form_for @q, data: { turbo_frame: "quizzes-list", controller: 'form', action: 'input->form#submit' } do |f| %>
+<%= search_form_for @q, data: { turbo_frame: 'quizzes-list', controller: 'form', action: 'input->form#submit' } do |f| %>
   <label class="input input-bordered flex items-center gap-2 input-md max-w-md mx-auto">
-    <%= f.search_field :body_or_answer_cont, class: "grow", placeholder: '例：ジョージ・マロリー ラテン語 ですが' %>
+    <%= f.search_field :body_or_answer_cont, class: 'grow', placeholder: '例：ジョージ・マロリー ラテン語 ですが' %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
