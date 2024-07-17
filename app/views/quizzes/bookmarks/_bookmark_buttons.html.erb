@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(quiz, 'bookmark') do %>
+  <% if logged_in? %>
+    <%= current_user.bookmark?(quiz) ? render('quizzes/bookmarks/unbookmark_button', quiz: quiz) : render('quizzes/bookmarks/bookmark_button', quiz: quiz) %>
+  <% else %>
+    <%= render 'quizzes/bookmarks/bookmark_button', quiz: quiz %>
+  <% end %>
+<% end %>
