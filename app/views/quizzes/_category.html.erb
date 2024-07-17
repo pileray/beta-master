@@ -1,4 +1,4 @@
-<%= link_to quizzes_path(q: { category_name_eq: category.name }) do %>
+<%= link_to quizzes_path(q: { category_name_eq: category.name }), data: { turbo_frame: 'quizzes-list' } do %>
   <div class="<%= category.decorate.category_badge_class %> w-20 whitespace-nowrap overflow-hidden text-ellipsis mr-1">
     <%= category.name %>
   </div>
