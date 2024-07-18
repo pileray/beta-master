@@ -73,7 +73,11 @@ RSpec.configure do |config|
   # config.include OmniauthMacros
 
   # test用にcategoryのマスタとクイズを作成
-  config.before :suite do
-    system 'bin/rails db:seed'
+  config.before(:suite) do
+    load Rails.root.join('db/seeds.rb')
+  end
+
+  config.after(:suite) do
+    system 'bin/rails db:truncate_all'
   end
 end
