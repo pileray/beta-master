@@ -35,7 +35,9 @@ module.exports = {
       'alert',
       'alert-success',
       'alert-error',
-      'alert-info'
+      'alert-info',
+      'btn-bookmark',
+      'btn-unbookmark'
     ],
   },
 }
