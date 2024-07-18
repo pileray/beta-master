@@ -12,6 +12,8 @@
 class Quiz < ApplicationRecord
   has_one :quiz_category, dependent: :destroy
   has_one :category, through: :quiz_category
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarking_users, through: :bookmarks
   validates :body, presence: true
   validates :answer, presence: true
   validates :offset, presence: true

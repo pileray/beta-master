@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_11_101953) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_085203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_11_101953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_bookmarks_on_quiz_id"
+    t.index ["user_id", "quiz_id"], name: "index_bookmarks_on_user_id_and_quiz_id", unique: true
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -53,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_11_101953) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bookmarks", "quizzes"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "quiz_categories", "categories"
   add_foreign_key "quiz_categories", "quizzes"
 end

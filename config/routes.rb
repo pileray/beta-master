@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     # 今後クイズ出題機能で実装
     resource 'random_exam', on: :member, module: 'quizzes', only: %w[show]
     resource 'bookmarked_exam', on: :member, module: 'quizzes', only: %w[show]
+    resource 'bookmark', on: :member, module: 'quizzes', only: %w[create destroy]
   end
 
   # 今後クイズ出題機能で実装

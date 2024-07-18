@@ -1,0 +1,3 @@
+<%= turbo_stream.replace dom_id(@quiz, 'bookmark') do %>
+  <%= render 'quizzes/bookmarks/bookmark_buttons', quiz: @quiz %>
+<% end %>

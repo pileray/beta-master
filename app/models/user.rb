@@ -10,4 +10,18 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_quizzes, through: :bookmarks
+
+  def bookmark(quiz)
+    bookmarks.create!(quiz_id: quiz.id)
+  end
+
+  def unbookmark(quiz)
+    bookmarks.find_by!(quiz_id: quiz.id).destroy!
+  end
+
+  def bookmark?(quiz)
+    bookmarks.exists?(quiz_id: quiz.id)
+  end
 end
