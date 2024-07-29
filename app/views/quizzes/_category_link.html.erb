@@ -1,0 +1,3 @@
+<%= link_to quizzes_path(q: { category_name_eq: category.name }), data: { turbo_frame: 'quizzes-list' } do %>
+  <%= render 'category', category: category %>
+<% end %>
