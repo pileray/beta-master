@@ -8,7 +8,7 @@
         全て
       </div>
     <% end %>
-    <%= render partial: 'category', collection: Category.all %>
+    <%= render partial: 'category_link', collection: Category.all, as: :category %>
   </div>
   <%= turbo_frame_tag 'quizzes-list', data: { turbo_action: :advance } do %>
     <table class="table sm:table-sm table-xs p-3 mt-6">

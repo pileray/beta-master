@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import QuizzesListController from "./quizzes_list_controller"
 application.register("quizzes-list", QuizzesListController)
+
+import RandomExamController from "./random_exam_controller"
+application.register("random-exam", RandomExamController)

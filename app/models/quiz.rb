@@ -26,4 +26,18 @@ class Quiz < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     %w[category quiz_category]
   end
+
+  def self.get_random_quiz(session)
+    session[:answered_quiz_ids] ||= []
+
+    unanswered_quiz_ids = Quiz.pluck(:id) - session[:answered_quiz_ids]
+
+    if unanswered_quiz_ids.empty?
+      session[:answered_quiz_ids] = []
+      unanswered_quiz_ids = Quiz.pluck(:id)
+    end
+
+    random_quiz_id = unanswered_quiz_ids.sample
+    Quiz.find(random_quiz_id)
+  end
 end

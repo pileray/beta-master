@@ -7,13 +7,11 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :quizzes, only: [:index] do
-    # 今後クイズ出題機能で実装
     resource 'random_exam', on: :member, module: 'quizzes', only: %w[show]
     resource 'bookmarked_exam', on: :member, module: 'quizzes', only: %w[show]
     resource 'bookmark', on: :member, module: 'quizzes', only: %w[create destroy]
   end
 
-  # 今後クイズ出題機能で実装
   namespace 'quizzes' do
     delete 'random_exam', to: 'random_exams#destroy'
     delete 'bookmarked_exam', to: 'bookmarked_exams#destroy'

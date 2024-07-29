@@ -10,9 +10,9 @@
         </figure>
         <div class="card-body items-center pt-0">
           <h2 class="card-title">問題</h2>
-          <p>ベートーベンの三大ピアノソナタとは、『悲愴』、『熱/</p>
+          <p><%= @sample_quiz.decorate.truncated_body %>/</p>
           <div class="card-actions mt-2">
-            <%= link_to '鍛える？', '#', class: 'btn btn-accent text-white' %>
+            <%= link_to '鍛える？', quiz_random_exam_path(@sample_quiz), class: 'btn btn-accent text-white' %>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
     <hr>
     <div class="items-center w-full flex flex-col justify-center mt-5 px-4">
       <div class="max-w-lg w-full">
-        <%= link_to 'ランダム出題', '#', class: 'btn btn-primary w-full' %>
+        <%= link_to 'ランダム出題', quiz_random_exam_path(Quiz.get_random_quiz(session)), class: 'btn btn-primary w-full' %>
       </div>
       <div class="max-w-lg w-full mt-5">
       <% if logged_in? %>
