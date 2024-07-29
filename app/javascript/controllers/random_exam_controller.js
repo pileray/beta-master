@@ -16,6 +16,7 @@ export default class extends Controller {
   }
 
   showBody() {
+    this.currentLength = this.fullLength;
     this.bodyTarget.textContent = this.bodyValue;
   }
 
