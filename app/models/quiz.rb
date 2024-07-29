@@ -38,8 +38,6 @@ class Quiz < ApplicationRecord
     end
 
     random_quiz_id = unanswered_quiz_ids.sample
-    session[:answered_quiz_ids] << random_quiz_id
-
     Quiz.find(random_quiz_id)
   end
 

@@ -1,6 +1,10 @@
 class Quizzes::RandomExamsController < ApplicationController
   def show
+    session[:answered_quiz_ids] ||= []
+
     @quiz = Quiz.find(params[:quiz_id])
+    session[:answered_quiz_ids] << @quiz.id
+
     @next_quiz = Quiz.get_random_quiz(session)
   end
 
