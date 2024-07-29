@@ -40,5 +40,4 @@ class Quiz < ApplicationRecord
     random_quiz_id = unanswered_quiz_ids.sample
     Quiz.find(random_quiz_id)
   end
-
 end
