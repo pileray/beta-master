@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
   has_many :bookmarks, dependent: :destroy
-  has_many :bookmarked_quizzes, through: :bookmarks
+  has_many :bookmarked_quizzes, through: :bookmarks, source: :quiz
 
   def bookmark(quiz)
     bookmarks.create!(quiz_id: quiz.id)
