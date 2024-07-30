@@ -1,43 +1,11 @@
 <%= turbo_frame_tag 'quiz_card' do %>
-  <div class="w-full max-w-3xl mx-auto p-4 bg-background rounded-lg shadow-md"
-       data-controller="random-exam"
-       data-random-exam-answer-value="<%= @quiz.answer %>"
-       data-random-exam-body-value="<%= @quiz.body %>"
-       data-random-exam-initial-body-value="<%= @quiz.decorate.truncated_body %>">
-    <div class="flex items-center justify-between mb-4">
-      <div class="flex gap-2">
-        <%= render 'quizzes/category', category: @quiz.category %>
-      </div>
-      <%= render 'quizzes/bookmarks/bookmark_buttons', quiz: @quiz %>
-    </div>
-    <div class="bg-muted rounded-md p-4 mb-4">
-      <p class="p-5 rounded-md text-lg font-medium bg-base-200"
-         style="height: 200px; overflow-y: auto;"
-         data-random-exam-target="body">
-      </p>
-      <div class="flex justify-end items-center mt-2">
-        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-sm btn-primary mr-2"
-                data-action="random-exam#addCharacters">
-          5文字追加
-        </button>
-        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-sm btn-outline btn-primary"
-                data-action="random-exam#showBody">
-          全文表示
-        </button>
-      </div>
-    </div>
-    <div class="bg-muted rounded-md p-4 mb-4" data-action="click->random-exam#showAnswer">
-      <p id="show-answer" class="p-5 rounded-md text-lg font-medium bg-base-200 text-center text-blue-400"
-         data-random-exam-target="answer">回答表示</p>
-    </div>
-    <div class="flex justify-between"></div>
-  </div>
+  <%= render 'quizzes/quiz_card', quiz: @quiz %>
   <div class="w-full max-w-3xl mx-auto px-4 mt-3">
     <div class="flex justify-between items-center space-x-2">
-      <%= button_to '終了', quizzes_random_exam_path, method: :delete, data: { turbo: false },
-                                                    class: 'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-outline flex-1' %>
+      <%= link_to '終了', quizzes_random_exam_path, data: { turbo_method: :delete, turbo_frame: '_top' },
+                                                  class: 'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-outline flex-1' %>
       <%= link_to '次の問題', quiz_random_exam_path(@next_quiz), data: { turbo_action: :advance },
-                                                             class: 'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-primary w-auto px-4 py-2' %>
+                                                             class: 'inline-flex items-center justify-center whitespace-nowrap text-sm font-medium btn btn-primary flex-1' %>
     </div>
   </div>
 <% end %>

@@ -40,4 +40,18 @@ class Quiz < ApplicationRecord
     random_quiz_id = unanswered_quiz_ids.sample
     Quiz.find(random_quiz_id)
   end
+
+  def self.get_bookmarked_quiz(session, user)
+    session[:answered_bookmarked_quiz_ids] ||= []
+
+    unanswered_quiz_ids = user.bookmarked_quizzes.pluck(:id) - session[:answered_bookmarked_quiz_ids]
+
+    if unanswered_quiz_ids.empty?
+      session[:answered_bookmarked_quiz_ids] = []
+      unanswered_quiz_ids = user.bookmarked_quizzes.pluck(:id)
+    end
+
+    random_quiz_id = unanswered_quiz_ids.sample
+    user.bookmarked_quizzes.find(random_quiz_id)
+  end
 end
