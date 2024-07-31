@@ -65,4 +65,7 @@ Rails.application.configure do
   # CI用にassetsのcompileを実行
   config.assets.debug = true
   config.assets.compile = true
+
+  # LINE通知のtest実行にinlineを使用
+  config.active_job.queue_adapter = :inline
 end
