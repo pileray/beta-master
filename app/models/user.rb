@@ -2,9 +2,10 @@
 #
 # Table name: users
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                :bigint           not null, primary key
+#  line_notification :boolean          default(TRUE), not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
