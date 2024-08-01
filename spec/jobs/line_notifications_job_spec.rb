@@ -22,7 +22,17 @@ RSpec.describe LineNotificationsJob, type: :job do
       end
 
       it 'QuizのLine通知を送信すること' do
-        expected_text = "【今日のクイズ🌤】\n\nおはようございます！本日のクイズです！この読ませ押し、分かりますか？👀\n\n#{quiz.decorate.truncated_body}/\n\n回答はコチラ💡\n\nhttps://#{Settings.default_url_options.host}/quizzes/#{quiz.id}/random_exam?openExternalBrowser=1"
+        expected_text = <<~TEXT.chomp
+        【今日のクイズ🌤】
+
+        #{quiz.decorate.truncated_body}/
+
+          おはようございます！本日のクイズです！この読ませ押し、分かりますか？👀
+
+          回答はコチラ💡
+
+          https://#{Settings.default_url_options.host}/quizzes/#{quiz.id}/random_exam?openExternalBrowser=1
+        TEXT
 
         perform_enqueued_jobs do
           LineNotificationsJob.perform_later
