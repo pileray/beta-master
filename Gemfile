@@ -63,9 +63,9 @@ gem 'draper'
 gem 'ransack'
 
 # LINE通知の定期実行
+gem 'line-bot-api'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-gem 'line-bot-api'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
