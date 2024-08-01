@@ -67,6 +67,7 @@ RSpec.configure do |config|
 
   config.include LoginMacros, type: :system
   config.include LoginMacros, type: :request
+  config.include ActiveJob::TestHelper, type: :job
 
   # [WIP]omniauthを利用したテスト作成予定
   # OmniAuth.config.test_mode = true

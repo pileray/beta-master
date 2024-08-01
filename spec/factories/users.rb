@@ -9,6 +9,10 @@
 #
 FactoryBot.define do
   factory :user do
-    
+    line_notification { true }
+
+    after(:create) do |user|
+      create(:authentication, user: user)
+    end
   end
 end
