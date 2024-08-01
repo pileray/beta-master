@@ -12,15 +12,15 @@ class LineNotificationsJob < ApplicationJob
       @quiz = Quiz.get_notification_quiz(user)
 
       message_text = <<~TEXT.chomp
-      【今日のクイズ🌤】
-      
-      #{@quiz.decorate.truncated_body}/
+        【今日のクイズ🌤】
 
-        おはようございます！本日のクイズです！この読ませ押し、分かりますか？👀
+        #{@quiz.decorate.truncated_body}/
 
-        回答はコチラ💡
+          おはようございます！本日のクイズです！この読ませ押し、分かりますか？👀
 
-        https://#{Settings.default_url_options.host}/quizzes/#{@quiz.id}/random_exam?openExternalBrowser=1
+          回答はコチラ💡
+
+          https://#{Settings.default_url_options.host}/quizzes/#{@quiz.id}/random_exam?openExternalBrowser=1
       TEXT
 
       message = { type: 'text', text: message_text }
