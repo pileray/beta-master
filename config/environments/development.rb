@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # ngrok用
   config.hosts << Settings.default_url_options.host
+  Rails.application.routes.default_url_options[:host] = Settings.default_url_options.host
+
+  # LINE通知の定期実行をsidekiqで行う
+  config.active_job.queue_adapter = :sidekiq
 end

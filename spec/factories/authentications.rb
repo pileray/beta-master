@@ -16,7 +16,7 @@
 FactoryBot.define do
   factory :authentication do
     provider { 'line' }
-    uid { '123545' }
+    uid { rand.to_s[2..7] }
     association :user
   end
 end

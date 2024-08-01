@@ -54,4 +54,11 @@ class Quiz < ApplicationRecord
     random_quiz_id = unanswered_quiz_ids.sample
     user.bookmarked_quizzes.find(random_quiz_id)
   end
+
+  def self.get_notification_quiz(user)
+    user_not_bookmarked_quiz_ids = Quiz.pluck(:id) - user.bookmarked_quizzes.pluck(:id)
+
+    random_quiz_id = user_not_bookmarked_quiz_ids.sample
+    Quiz.find(random_quiz_id)
+  end
 end

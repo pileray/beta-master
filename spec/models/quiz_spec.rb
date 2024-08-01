@@ -59,4 +59,15 @@ RSpec.describe Quiz, type: :model do
       expect(session[:answered_bookmarked_quiz_ids]).to be_empty
     end
   end
+
+  describe '.get_notification_quiz' do
+    it 'お気に入りされていないクイズをランダムに取得する' do
+      user.bookmarked_quizzes << [quiz1, quiz2]
+
+      quiz = Quiz.get_notification_quiz(user)
+
+      expect(quiz).to eq quiz3
+      expect(user.bookmarked_quizzes).not_to include(quiz)
+    end
+  end
 end
