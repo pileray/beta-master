@@ -18,6 +18,7 @@ RSpec.describe "Quizzes::RandomExams", type: :request do
       get quiz_random_exam_path(quiz1)
       expect(response).to have_http_status(:success)
       expect(session[:answered_quiz_ids]).to include quiz1.id
+      
       delete quizzes_random_exam_path
       expect(session[:answered_quiz_ids]).to be_empty
       expect(response).to redirect_to(root_path)
