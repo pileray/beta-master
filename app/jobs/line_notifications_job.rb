@@ -6,25 +6,25 @@ class LineNotificationsJob < ApplicationJob
 
   # rubocop:disable Metrics/MethodLength
   def perform(*_args)
-    users = User.where(line_notification: true)
+    users = User.where(line_notification: true).includes(:line_authentication)
 
     users.each do |user|
-      @quiz = Quiz.get_notification_quiz(user)
+      quiz = Quiz.get_notification_quiz(user)
 
       message_text = <<~TEXT.chomp
         【今日のクイズ🌤】
 
-        #{@quiz.decorate.truncated_body}/
+        問題【#{quiz.decorate.truncated_body}/】
 
-          おはようございます！本日のクイズです！この読ませ押し、分かりますか？👀
+        おはようございます！本日のクイズです！この読ませ押し、分かりますか？👀
 
-          回答はコチラ💡
+        回答はコチラ💡
 
-          https://#{Settings.default_url_options.host}/quizzes/#{@quiz.id}/random_exam?openExternalBrowser=1
+        https://#{Settings.default_url_options.host}/quizzes/#{quiz.id}/random_exam?openExternalBrowser=1
       TEXT
 
       message = { type: 'text', text: message_text }
-      uid = user.authentications.find_by(provider: 'line').uid
+      uid = user.line_authentication.uid
       client.push_message(uid, message)
       logger.info 'PushLineSuccess'
     end
