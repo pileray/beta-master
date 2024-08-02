@@ -14,5 +14,5 @@
 #  index_authentications_on_provider_and_uid  (provider,uid)
 #
 class Authentication < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :line_authentication
 end

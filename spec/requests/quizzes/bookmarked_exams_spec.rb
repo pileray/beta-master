@@ -22,6 +22,7 @@ RSpec.describe "Quizzes::BookmarkedExams", type: :request do
       get quiz_bookmarked_exam_path(quiz1)
       expect(response).to have_http_status(:success)
       expect(session[:answered_bookmarked_quiz_ids]).to include quiz1.id
+      
       delete quizzes_bookmarked_exam_path
       expect(session[:answered_bookmarked_quiz_ids]).to be_empty
       expect(response).to redirect_to(root_path)

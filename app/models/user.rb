@@ -10,6 +10,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :authentications, dependent: :destroy
+  has_one :line_authentication, -> { where(provider: 'line') },
+          class_name: 'Authentication', dependent: :destroy, inverse_of: :user
   accepts_nested_attributes_for :authentications
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_quizzes, through: :bookmarks, source: :quiz
