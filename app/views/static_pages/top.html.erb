@@ -24,9 +24,11 @@
           <span class="font-bold underline decoration-sky-500 decoration-4 underline-offset-0">BetaMaster</span>は
           <span class="font-bold underline decoration-sky-500 decoration-4 underline-offset-0">ベタ問の「読ませ」</span>
           に特化したクイズ学習アプリです。<br>
-          ・問題文の一部だけを表示し、回答の確定ポイントを練習<br>
-          ・LINE連携で不得意問題の集中練習<br>
-          ・毎日のクイズ通知を受け取ることで継続した学習をサポート<br>
+          <br>
+          ✔ 問題文の一部だけを表示し、回答の確定ポイントを練習<br>
+          ✔ LINE連携で苦手問題の集中練習<br>
+          ✔ 毎日のクイズ通知を受け取ることで継続した学習をサポート<br>
+          <br>
           <span class="font-bold">さあ、共にベタ問を探求しましょう！</span>
         </p>
       </div>
@@ -39,12 +41,12 @@
       <div class="max-w-lg w-full mt-5">
       <% if logged_in? %>
         <% if current_user.bookmarked_quizzes.present? %>
-          <%= link_to 'お気に入りから出題', quiz_bookmarked_exam_path(Quiz.get_bookmarked_quiz(session, current_user)), class: 'btn btn-outline btn-primary w-full' %>
+          <%= link_to 'マイクイズ帳から出題', quiz_bookmarked_exam_path(Quiz.get_bookmarked_quiz(session, current_user)), class: 'btn btn-outline btn-primary w-full' %>
         <% else %>
-          <button class="btn btn-outline btn-primary w-full" onclick="require_bookmark_modal.showModal()">お気に入りから出題</button>
+          <button class="btn btn-outline btn-primary w-full" onclick="require_bookmark_modal.showModal()">マイクイズ帳から出題</button>
         <% end %>
       <% else %>
-        <button class="btn btn-outline btn-primary w-full" onclick="require_login_modal.showModal()">お気に入りから出題</button>
+        <button class="btn btn-outline btn-primary w-full" onclick="require_login_modal.showModal()">マイクイズ帳から出題</button>
       <% end %>
       </div>
     </div>
