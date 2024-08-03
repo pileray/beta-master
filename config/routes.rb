@@ -21,4 +21,10 @@ Rails.application.routes.draw do
     require 'sidekiq/web'
     mount Sidekiq::Web, at: '/sidekiq'
   end
+
+  namespace 'mypage' do
+    root to: 'quizzes#index'
+    resources :quizzes, only: %w[index]
+    resource :line_notification, only: %w[edit update destroy]
+  end
 end
