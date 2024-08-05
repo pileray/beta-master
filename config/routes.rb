@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :mypage do
+    get 'accounts/edit'
+  end
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
@@ -26,5 +29,6 @@ Rails.application.routes.draw do
     root to: 'quizzes#index'
     resources :quizzes, only: %w[index]
     resource :line_notification, only: %w[edit update destroy]
+    resource :account, only: %w[edit]
   end
 end
