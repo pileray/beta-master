@@ -1,2 +1,15 @@
-<h1>Mypage::Quizzes#index</h1>
-<p>Find me in app/views/mypage/quizzes/index.html.erb</p>
+<%= turbo_frame_tag 'quizzes-list', data: { turbo_action: :advance } do %>
+  <table class="table sm:table-sm table-xs p-3 mt-6">
+    <thead>
+      <tr>
+        <th>問題</th>
+        <th class="w-1/6">正解</th>
+        <th class="w-1/12"><%= sort_link(@q, :category_name, 'ジャンル') %></th>
+        <th class="w-1/12">マイクイズ帳</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'quizzes/quiz', collection: @quizzes %>
+    </tbody>
+  </table>
+<% end %>
