@@ -1,4 +1,4 @@
-class Mypage::LineNotificationsController < ApplicationController
+class Mypage::LineNotificationsController < Mypage::BaseController
   def edit
   end
 

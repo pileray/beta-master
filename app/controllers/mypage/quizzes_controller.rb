@@ -1,4 +1,4 @@
-class Mypage::QuizzesController < ApplicationController
+class Mypage::QuizzesController < Mypage::BaseController
   def index
   end
 end
