@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   namespace 'mypage' do
     root to: 'quizzes#index'
     resources :quizzes, only: %w[index]
-    resource :line_notification, only: %w[edit update destroy]
+    resource :line_notification, only: %w[edit update]
     resource :account, only: %w[edit]
   end
 end
