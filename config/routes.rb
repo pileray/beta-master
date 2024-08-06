@@ -31,4 +31,6 @@ Rails.application.routes.draw do
     resource :line_notification, only: %w[edit update]
     resource :account, only: %w[edit]
   end
+
+  resources :users, only: %w[destroy]
 end
