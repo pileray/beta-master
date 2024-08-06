@@ -1,6 +1,6 @@
 <%= turbo_frame_tag 'line_notification_button' do %>
   <%= form_with model: user, url: mypage_line_notification_path, method: :patch do |f| %>
-    <div class="form-control">
+    <div class="form-control w-52">
       <label class="label cursor-pointer">
         <span class="label-text">LINE通知設定</span>
           <%= f.check_box :line_notification, class: 'toggle toggle-success',
