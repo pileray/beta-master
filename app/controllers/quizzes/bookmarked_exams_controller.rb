@@ -1,4 +1,6 @@
 class Quizzes::BookmarkedExamsController < ApplicationController
+  before_action :require_login, only: %i[show destroy]
+
   def show
     session[:answered_bookmarked_quiz_ids] ||= []
 
