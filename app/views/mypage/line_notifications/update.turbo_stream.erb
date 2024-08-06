@@ -1,0 +1,7 @@
+<%= turbo_stream.replace 'line_notification_button' do %>
+  <%= render partial: 'toggle_button', locals: { user: @user } %>
+<% end %>
+
+<%= turbo_stream.replace 'flash_messages' do %>
+  <%= render 'shared/toasts' %>
+<% end %>
