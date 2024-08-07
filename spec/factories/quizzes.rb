@@ -13,6 +13,15 @@ FactoryBot.define do
   factory :quiz do
     body { "MyText" }
     answer { "MyString" }
-    offset { 1 }
+    offset { 3 }
+
+    after(:create) do |quiz, evaluator|
+      category = evaluator.category || Category.all.sample(1).first
+      create(:quiz_category, quiz: quiz, category: category)
+    end
+
+    transient do
+      category { nil }
+    end
   end
 end
