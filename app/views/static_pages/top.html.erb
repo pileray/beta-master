@@ -42,11 +42,11 @@
         <% if logged_in? && current_user&.bookmarked_quizzes.present? %>
           <%= link_to 'マイクイズ帳から出題', quiz_bookmarked_exam_path(Quiz.get_bookmarked_quiz(session, current_user)), class: 'btn btn-outline btn-primary w-full' %>
         <% else %>
-          <button 
+          <button
             class="btn btn-outline btn-primary w-full"
             data-controller="modal"
             data-action="modal#show"
-            data-modal-id-value=<%= logged_in? ? "require_bookmark_modal" : "require_login_modal" %>>
+            data-modal-id-value="<%= logged_in? ? 'require_bookmark_modal' : 'require_login_modal' %>">
             マイクイズ帳から出題
           </button>
         <% end %>

@@ -1,8 +1,7 @@
 class Mypage::LineNotificationsController < Mypage::BaseController
   before_action :set_user
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user.update!(line_notification_params)
