@@ -1,6 +1,6 @@
 default_url_options:
-  host: '25e9-1-72-9-240.ngrok-free.app'
+  host: 'f643-1-72-9-240.ngrok-free.app'
 line_callback_url: 
-  url: 'https://25e9-1-72-9-240.ngrok-free.app/oauth/callback?provider=line'
+  url: 'https://f643-1-72-9-240.ngrok-free.app/oauth/callback?provider=line'
 redis:
   url: 'redis://redis:6379'
