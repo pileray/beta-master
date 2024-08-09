@@ -1,4 +1,6 @@
 class Quizzes::BookmarksController < ApplicationController
+  before_action :require_login, only: %i[create destroy]
+
   def create
     @quiz = Quiz.find(params[:quiz_id])
     current_user.bookmark(@quiz)

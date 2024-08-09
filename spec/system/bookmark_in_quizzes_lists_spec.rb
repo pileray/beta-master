@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "BookmarkInQuizzesLists", type: :system do
   let!(:user) { create(:user) }
-  let!(:quiz) { Quiz.first }
+  let!(:quiz) { create(:quiz) }
 
   before do
     login_user_system_spec(user)

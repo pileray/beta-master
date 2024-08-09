@@ -10,6 +10,12 @@ application.register("form", FormController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LineNotificationController from "./line_notification_controller"
+application.register("line-notification", LineNotificationController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import QuizzesListController from "./quizzes_list_controller"
 application.register("quizzes-list", QuizzesListController)
 
