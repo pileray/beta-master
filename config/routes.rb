@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %w[destroy]
+
+  match '*path', to: 'application#render_404', via: :all
 end
