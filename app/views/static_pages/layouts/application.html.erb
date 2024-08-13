@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-theme="light">
   <head>
-    <%= display_meta_tags(default_meta_tags.merge(title: 'マイページ')) %>
+    <%= display_meta_tags(default_meta_tags) %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,17 +13,10 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="max-w-5xl mx-auto p-3">
-
-      <%= render 'mypage/shared/tab_menu' %>
-
-      <div class="bg-base-100 border-base-300 rounded-box p-6">
-        <%= yield %>
-      </div>
-
-    </div>
+    <%= yield %>
     <%= render 'shared/require_login_modal' %>
     <%= render 'shared/require_bookmark_modal' %>
     <%= render 'shared/toasts' %>
+    <%= render 'static_pages/layouts/footer' %>
   </body>
 </html>

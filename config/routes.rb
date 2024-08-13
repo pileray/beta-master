@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   root "static_pages#top"
   get "/complete_signup", to: "static_pages#complete_signup"
+  get "/terms", to: "static_pages#terms"
+  get "/privacy", to: "static_pages#privacy"
   delete '/logout', to: 'sessions#destroy'
 
   resources :quizzes, only: [:index] do
@@ -33,4 +35,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %w[destroy]
+
+  match '*path', to: 'application#render404', via: :all
 end

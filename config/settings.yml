@@ -1,0 +1,13 @@
+meta:
+  site: BetaMaster
+  title: BetaMaster - 「確定ポイント」を極めるクイズアプリ
+  description: BetaMasterは競技クイズにおける「ベタ問題」の「確定ポイント」に特化したクイズアプリです。あなたの「ベタ力」を試してみませんか？
+  keywords:
+    - 早押しクイズ
+    - ベタ問題
+    - ベタ問
+    - 確定ポイント
+    - 競技クイズ
+  og:
+    type: website
+    image_path: ogp.png
