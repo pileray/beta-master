@@ -3,6 +3,7 @@ ARG ROOT="/beta-master"
 ENV LANG=C.UTF-8
 ENV TZ=Asia/Tokyo
 
+RUN mkdir ${ROOT}
 WORKDIR ${ROOT}
 
 RUN apt-get update; \
@@ -23,6 +24,8 @@ RUN bundle install --jobs 4
 COPY package.json ${ROOT}
 COPY yarn.lock ${ROOT}
 RUN yarn install
+
+COPY . ${ROOT}
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
