@@ -32,4 +32,5 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-CMD ["bin/dev"]
+CMD ["sh", "-c", "if [ \"$SIDEKIQ_ENV\" = 'true' ]; then bundle exec sidekiq -C config/sidekiq.yml; else rails s -b 0.0.0.0; fi"]
+# CMD ["bin/dev"]
