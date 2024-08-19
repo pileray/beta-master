@@ -3,6 +3,7 @@ ARG ROOT="/beta-master"
 ENV LANG=C.UTF-8
 ENV TZ=Asia/Tokyo
 
+RUN mkdir ${ROOT}
 WORKDIR ${ROOT}
 
 RUN apt-get update; \
@@ -24,9 +25,11 @@ COPY package.json ${ROOT}
 COPY yarn.lock ${ROOT}
 RUN yarn install
 
+COPY . ${ROOT}
+
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-CMD ["bin/dev"]
+CMD ["sh", "-c", "if [ \"$SIDEKIQ_ENV\" = 'true' ]; then bundle exec sidekiq -C config/sidekiq.yml; elif [ \"$RAILS_ENV\" = 'production' ]; then rails s -b 0.0.0.0; else bin/dev; fi"]

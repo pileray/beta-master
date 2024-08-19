@@ -40,6 +40,8 @@ module BetaMaster
     end
 
     # Capybaraを利用したログインテスト用にRackSessionAccessを利用
-    config.middleware.use RackSessionAccess::Middleware
+    if Rails.env.test?
+      config.middleware.use RackSessionAccess::Middleware
+    end
   end
 end

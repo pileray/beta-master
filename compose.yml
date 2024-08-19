@@ -10,6 +10,7 @@ services:
       - db
       - redis
       - chrome
+      - sidekiq
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -26,6 +27,20 @@ services:
       POSTGRES_PASSWORD: password
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  sidekiq:
+    build: .
+    volumes:
+      - .:/beta-master:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/beta-master/node_modules
+    depends_on:
+      - db
+      - redis
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      REDIS_URL: redis://redis:6379
+    command: bundle exec sidekiq -C config/sidekiq.yml
   redis:
     image: redis:latest
     ports:
