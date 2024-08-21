@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+  - active_storage_analysis
+  - active_storage_purge
+:scheduler:
+  :schedule:
+    line_notifications:
+      cron: '30 9 * * *'
+      class: LineNotificationsJob

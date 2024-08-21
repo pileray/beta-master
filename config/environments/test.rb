@@ -61,4 +61,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # CI用にassetsのcompileを実行
+  config.assets.debug = true
+  config.assets.compile = true
+
+  # LINE通知のtest実行にinlineを使用
+  config.active_job.queue_adapter = :inline
 end

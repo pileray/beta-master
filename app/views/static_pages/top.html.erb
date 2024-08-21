@@ -1,0 +1,81 @@
+<div class="hero bg-base-200 h-fit py-10">
+  <div>
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mb-2">
+        <figure class="px-20">
+          <img
+            src="<%= image_url('top_image.png') %>"
+            alt="Top image"
+            class="rounded-xl">
+        </figure>
+        <div class="card-body items-center pt-0">
+          <h2 class="card-title">問題</h2>
+          <p><%= @sample_quiz.decorate.truncated_body %>/</p>
+          <div class="card-actions mt-2">
+            <%= link_to '鍛える？', quiz_random_exam_path(@sample_quiz), class: 'btn btn-accent text-white' %>
+          </div>
+        </div>
+      </div>
+      <div class="items-center lg:text-left">
+        <h1 class="text-5xl font-bold">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Strengthen your BetaQuiz.</span>
+        </h1>
+        <p class="py-6 leading-loose">
+          <span class="font-bold underline decoration-sky-500 decoration-4 underline-offset-0">BetaMaster</span>は
+          <span class="font-bold underline decoration-sky-500 decoration-4 underline-offset-0">ベタ問の「確定ポイント」</span>
+          に特化したクイズ学習アプリです。<br>
+          <br>
+          ✔ 問題文の一部だけを表示し、回答の確定ポイントを練習<br>
+          ✔ LINE連携で苦手問題の集中練習<br>
+          ✔ 毎日のクイズ通知を受け取ることで継続した学習をサポート<br>
+          <br>
+          <span class="font-bold">さあ、共にベタ問を探求しましょう！</span>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="items-center w-full flex flex-col justify-center mt-5 px-4">
+      <div class="max-w-lg w-full">
+        <%= link_to 'ランダム出題', quiz_random_exam_path(Quiz.get_random_quiz(session)), class: 'btn btn-primary w-full' %>
+      </div>
+      <div class="max-w-lg w-full mt-5">
+        <% if logged_in? && current_user&.bookmarked_quizzes.present? %>
+          <%= link_to 'マイクイズ帳から出題', quiz_bookmarked_exam_path(Quiz.get_bookmarked_quiz(session, current_user)), class: 'btn btn-outline btn-primary w-full' %>
+        <% else %>
+          <button
+            class="btn btn-outline btn-primary w-full"
+            data-controller="modal"
+            data-action="modal#show"
+            data-modal-id-value="<%= logged_in? ? 'require_bookmark_modal' : 'require_login_modal' %>">
+            マイクイズ帳から出題
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-4">
+  <h2 class="text-3xl font-bold text-center mb-4">
+    <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Screenshots</span>
+  </h2>
+  <div class="carousel carousel-center rounded-box">
+    <div class="carousel-item max-w-xl border-l border-r border-gray-300">
+      <img src="<%= image_url('sample1.png') %>" alt="クイズ一覧">
+    </div>
+    <div class="carousel-item max-w-xl border-l border-r border-gray-300">
+      <img
+        src="<%= image_url('sample2.png') %>"
+        alt="出題画面">
+    </div>
+    <div class="carousel-item max-w-xl border-l border-r border-gray-300">
+      <img
+        src="<%= image_url('sample3.png') %>"
+        alt="マイクイズ帳">
+    </div>
+    <div class="carousel-item max-w-xl border-l border-r border-gray-300">
+      <img
+        src="<%= image_url('sample4.png') %>"
+        alt="LINE通知">
+    </div>
+  </div>
+</div>

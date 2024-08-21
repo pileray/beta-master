@@ -1,0 +1,4 @@
+default_url_options:
+  host: 'beta-master.net'
+line_callback_url: 
+  url: 'https://beta-master.net/oauth/callback?provider=line'

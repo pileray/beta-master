@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
-    <title>BetaMaster</title>
+    <%= display_meta_tags(default_meta_tags) %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module' %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
+    <%= render 'shared/require_login_modal' %>
+    <%= render 'shared/require_bookmark_modal' %>
+    <%= render 'shared/toasts' %>
   </body>
 </html>

@@ -21,7 +21,27 @@ module BetaMaster
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # タイムゾーンとi18n用ロケールの設定
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    config.i18n.default_locale = :ja
+
+    # assets,helper,specファイルの自動作成を解除
+    config.generators do |g|
+      g.assets false
+      g.helper     false
+      g.test_framework :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false
+    end
+
+    # Capybaraを利用したログインテスト用にRackSessionAccessを利用
+    if Rails.env.test?
+      config.middleware.use RackSessionAccess::Middleware
+    end
   end
 end

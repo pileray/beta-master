@@ -1,0 +1,25 @@
+<div class="container mx-auto flex justify-center">
+  <div class="card lg:card-side bg-base-100 shadow-2xl max-w-2xl my-3 flex justify-center items-center">
+    <figure>
+      <img
+        src="<%= image_url('complete_signup.png') %>"
+        alt="complete signup"
+        class="h-60">
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title text-center flex justify-center">
+        BetaMasterへようこそ！<br>
+        友だち追加はお済みですか？
+      </h2>
+      <p class="flex justify-center mt-3">LINEで友だち追加をすると毎朝クイズが届きます。<br>LINEを活用して継続的な練習をしましょう！</p>
+      <a href="https://lin.ee/GLQoyAi" class="flex justify-center"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" class="h-10" border="0"></a>
+      <hr class="mt-3 mb-3">
+      <h3 class="font-bold text-center flex justify-center">
+        それでは早速学習を開始しましょう！
+      </h3>
+      <div class="max-w-lg w-full">
+        <%= link_to 'ランダム出題', quiz_random_exam_path(Quiz.get_random_quiz(session)), class: 'btn btn-primary w-full' %>
+      </div>
+    </div>
+  </div>
+</div>

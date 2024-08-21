@@ -1,0 +1,12 @@
+<tr>
+  <td class="max-w-sm "><%= quiz.body %></td>
+  <td>
+    <span class="text-blue-400" data-controller="quizzes-list" data-quizzes-list-answer-value="<%= quiz.answer %>" data-action="click->quizzes-list#showAnswer">回答表示</span>
+  </td>
+  <td>
+    <%= render 'quizzes/category', category: quiz.category %>
+  </td>
+  <td>
+    <%= render 'quizzes/bookmarks/bookmark_buttons', quiz: %>
+  </td>
+</tr>
