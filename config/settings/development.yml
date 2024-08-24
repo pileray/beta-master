@@ -1,4 +1,4 @@
 default_url_options:
-  host: 'f643-1-72-9-240.ngrok-free.app'
+  host: 'e00b-220-147-214-245.ngrok-free.app'
 line_callback_url: 
-  url: 'https://f643-1-72-9-240.ngrok-free.app/oauth/callback?provider=line'
+  url: 'https://e00b-220-147-214-245.ngrok-free.app/oauth/callback?provider=line'
