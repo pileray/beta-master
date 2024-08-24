@@ -1,6 +1,7 @@
 class Quizzes::BookmarkedExamsController < ApplicationController
   before_action :require_login, only: %i[show destroy]
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def show
     session[:answered_bookmarked_quiz_ids] ||= []
 
@@ -20,6 +21,7 @@ class Quizzes::BookmarkedExamsController < ApplicationController
 
     @next_quiz = Quiz.get_bookmarked_quiz(session, current_user)
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def destroy
     session[:answered_bookmarked_quiz_ids] = []
