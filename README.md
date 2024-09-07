@@ -163,3 +163,14 @@ SPAライクな使用感を実現するため以下の理由からHotwireを多�
 - 管理画面でのクイズのcsv一括登録
 - 「覚えた/覚えていないフラグ」の追加
 - CDの導入
+
+## 環境構築
+`$git clone git@github.com:pileray/beta-master.git`
+
+`$docker compose up`
+
+`$docker compose run --rm  web rails db:create`
+
+`$docker compose run --rm  web rails db:migrate`
+
+`$docker compose run --rm  web rails db:seed`
