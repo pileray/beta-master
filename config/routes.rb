@@ -22,10 +22,8 @@ Rails.application.routes.draw do
     delete 'bookmarked_exam', to: 'bookmarked_exams#destroy'
   end
 
-  if Rails.env.development?
-    require 'sidekiq/web'
-    mount Sidekiq::Web, at: '/sidekiq'
-  end
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/sidekiq'
 
   namespace 'mypage' do
     root to: 'quizzes#index'
